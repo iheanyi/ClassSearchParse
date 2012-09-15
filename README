@@ -1,3 +1,9 @@
+
+DEPENDENCIES:
+
+This program uses the Mechanize (wwwsearch.sourceforge.net/mechanize/) and BeautifulSoup (www.crummy.com/software/BeautifulSoup/) modules. Both can be obtained by using pip <modulename> or easy_install <modulename>, if you have them installed. 
+
+
 USAGE:
 
 To run the program, merely run the program like this: python main.py <Net ID> <password>
@@ -9,5 +15,7 @@ Future Features:
 - Query management from external file, no changing of the source required
 
 - Make the program more efficient
+
+- Remove command line argument for Username/Password, external file management for that
 
 Current Version: 0.1

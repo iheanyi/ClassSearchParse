@@ -78,7 +78,7 @@ class ClassParse:
 
 		#print form
 
-		print br.controls[3].name
+		#print br.controls[3].name
 
 		br.set_all_readonly(False)
 
