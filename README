@@ -1,0 +1,13 @@
+USAGE:
+
+To run the program, merely run the program like this: python main.py <Net ID> <password>
+
+Classes each have a certain attribute, more information will be included on them later
+
+Future Features:
+
+- Query management from external file, no changing of the source required
+
+- Make the program more efficient
+
+Current Version: 0.1
