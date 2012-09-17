@@ -8,7 +8,9 @@ USAGE:
 
 To run the program, merely run the program like this: python main.py <Net ID> <password>
 
-Classes each have a certain attribute, more information will be included on them later
+Classes each have a certain attribute, more information will be included on them later.
+
+In subjects.txt, enter which subjects you would like to search for classes within. Such as: ACCT for account, AME for Aerospace Mechanical Engineering, CSE for Computer Science and Engineering, MGTI for IT Management, etc. You can find these values by doing a Class Search on inside.nd.edu, a link to the list of values will be posted soon.
 
 Future Features:
 
@@ -18,4 +20,4 @@ Future Features:
 
 - Remove command line argument for Username/Password, external file management for that
 
-Current Version: 0.1
+Current Version: 0.2
