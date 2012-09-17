@@ -19,10 +19,16 @@ class ClassParse:
 		self.html = ''
 
 	def fetchResults(self):
-		
+
+		#Fetch names of subjects you want to query
+		subjects = [line.strip() for line in open('subjects.txt')]
+
+
 		#logger = logging.getLogger("mechanize")
 		#logger.addHandler(logging.StreamHandler(sys.stdout))
 		#logger.setLevel(logging.DEBUG)
+
+		print subjects
 
 		#Browser
 		br = mechanize.Browser()
@@ -80,9 +86,15 @@ class ClassParse:
 
 		#print br.controls[3].name
 
+
+		#Used for iterating over all subjects in the list, for selection purposes later
+		#for c in br.controls[3].items:
+		#	print c.name
+
 		br.set_all_readonly(False)
 
-		br.set_value(["CSE", "DESN", "ARST", "ART"],name="SUBJ")
+		br.set_value(subjects,name="SUBJ")
+
 
 		response = br.submit()
 		self.html = response.read()
