@@ -99,7 +99,7 @@ class ClassParse:
 		response = br.submit()
 		self.html = response.read()
 
-		self.parse(self.html)
+		#self.parse(self.html)
 
 	def parse(self, html):
 		soup = BeautifulSoup(self.html)
