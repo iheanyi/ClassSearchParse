@@ -10,7 +10,7 @@ import mechanize
 from BeautifulSoup import BeautifulSoup
 from requests import session
 
-TEMPLATE = """%(crn)s %(title)s %(time)s  %(op_spots)s"""
+TEMPLATE = """%(section)s %(course)s %(crn)s %(title)s %(time)s %(instructor)s %(op_spots)s"""
 
 class ClassParse:
 	def __init__(self):
@@ -50,15 +50,14 @@ class ClassParse:
 		#Headers
 		br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
+		#Open ND Login Page
 		br.open("https://was.nd.edu/reg/srch/loginPage.jsp")
-
-		#Select the initial form
 		br.select_form(nr=0)
 
 		#Testing the output of the Form
 		print br
 
-		#Log into InsideND
+		#Inserts username information
 		br['j_username'] = self.username
 		br['j_password'] = self.password
 		br.submit()
@@ -111,16 +110,30 @@ class ClassParse:
 			#print row
 			cells = row.findAll('td')
 
+
+
 			crn = cells[7].text
 			title = cells[1].text
 			time = cells[10].text
+			instructor = cells[9].text
 			op_spots = int(cells[5].text)
+			course = cells[0].text
+
+			#Separate first and last name of instructor
+			i_first = self.getInstructorFirst(instructor)
+			i_last = self.getInstructorLast(instructor)
+
+			course_no = self.getCourse(course)
+			section = self.getSection(course)
 
 			if(op_spots > 0):
 				yield {
+				'section': section,
+				'course': course_no,
 				'crn': crn,
 				'title': title,
 				'time': time,
+				'instructor': instructor,
 				'op_spots': op_spots,
 				}
 
@@ -128,4 +141,43 @@ class ClassParse:
 
 		for listing in self.parse(self.html):
 			print TEMPLATE % listing
+
+	def getInstructorFirst(self, instructor):
+		name = instructor.partition(',')
+		last = name[0]
+		first = name[2][1:]
+		#print first + ' ' + last
+
+		return first
+
+	def getInstructorLast(self, instructor):
+		name = instructor.partition(',')
+		last = name[0]
+
+		return last
+
+	def getCourse(self, course):
+
+		entry = course.partition('-')
+		co_no = entry[0]
+		section = entry[2]
+
+		course_no = re.sub('[^A-Za-z0-9]+', '', co_no)
+		section = re.sub('[^0-9]', '', section)
+
+		#print section + ' ' + cono
+
+		return course_no
+
+	def getSection(self, course):
+
+		entry = course.partition('-')
+		section = entry[2]
+
+		section = re.sub('[^0-9]', '', section)
+
+		return section
+
+
+
 
