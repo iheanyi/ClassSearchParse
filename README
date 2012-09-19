@@ -1,7 +1,7 @@
 
 DEPENDENCIES:
 
-This program uses the Mechanize (wwwsearch.sourceforge.net/mechanize/) and BeautifulSoup (www.crummy.com/software/BeautifulSoup/) modules. Both can be obtained by using pip <modulename> or easy_install <modulename>, if you have them installed. 
+This program uses the Mechanize (www.search.sourceforge.net/mechanize/) and BeautifulSoup (www.crummy.com/software/BeautifulSoup/) modules. Both can be obtained by using pip <modulename> or easy_install <modulename>, if you have them installed. 
 
 
 USAGE:
@@ -12,12 +12,15 @@ Classes each have a certain attribute, more information will be included on them
 
 In subjects.txt, enter which subjects you would like to search for classes within. Such as: ACCT for account, AME for Aerospace Mechanical Engineering, CSE for Computer Science and Engineering, MGTI for IT Management, etc. You can find these values by doing a Class Search on inside.nd.edu, a link to the list of values will be posted soon.
 
-Future Features:
+Future Updates:
 
 - Query management from external file, no changing of the source required
 
-- Make the program more efficient
+- Day of the week handling
 
-- Remove command line argument for Username/Password, external file management for that
+- Parse multiple instructors for a course
 
-Current Version: 0.2
+- Different user authentication?
+
+
+Current Version: 0.3
