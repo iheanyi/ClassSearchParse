@@ -14,8 +14,8 @@ TEMPLATE = """%(section)s %(course)s %(crn)s %(title)s %(time)s %(instructor)s %
 
 class ClassParse:
 	def __init__(self):
-		self.username = sys.argv[1]
-		self.password = sys.argv[2]
+		#self.username = sys.argv[1]
+		#self.password = sys.argv[2]
 		self.html = ''
 
 	def fetchResults(self):
@@ -51,16 +51,19 @@ class ClassParse:
 		br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
 		#Open ND Login Page
-		br.open("https://was.nd.edu/reg/srch/loginPage.jsp")
-		br.select_form(nr=0)
+		#br.open("https://was.nd.edu/reg/srch/loginPage.jsp")
+		#br.select_form(nr=0)
 
 		#Testing the output of the Form
-		print br
+		#print br
 
 		#Inserts username information
-		br['j_username'] = self.username
-		br['j_password'] = self.password
-		br.submit()
+		#br['j_username'] = self.username
+		#br['j_password'] = self.password
+		#br.submit()
+
+		#Open ClassSearch Page
+		br.open("https://was.nd.edu/reg/srch/ClassSearchServlet")
 
 		#What page are we on?
 		print br.geturl()
@@ -70,14 +73,14 @@ class ClassParse:
 		print br.title()
 
 		#CLick here to get started with ClassSearch
-		response = br.follow_link(nr=0)
+		#response = br.follow_link(nr=0)
 		#print response.read()
 
-		#print br.title()
+		print br.title()
 
 		br.select_form(nr=0)
 
-		#orms = [f for f in br.forms()]
+		#forms = [f for f in br.forms()]
 
 		#form = forms[0]
 
@@ -177,7 +180,5 @@ class ClassParse:
 		section = re.sub('[^0-9]', '', section)
 
 		return section
-
-
 
 
